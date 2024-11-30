@@ -1,0 +1,191 @@
+/* Container principal */
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7fc;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Container interno */
+  .container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+  }
+  
+  /* Título principal */
+  h1 {
+    font-size: 28px;
+    color: #2b2b2b;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  /* Título das seções */
+  h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Estilos dos campos de input */
+  input[type="text"], input[type="number"] {
+    width: 96%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 8px;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"]:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: #0066cc;
+  }
+  
+  /* Botões */
+  button {
+    padding: 12px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #0066cc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #005bb5;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Estilo dos botões de contas */
+  .account-button {
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .account-button.selected {
+    background-color: #0066cc;
+  }
+  
+  .account-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Estilo para o erro */
+  .error {
+    margin-top: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .error p {
+    margin: 0;
+  }
+  
+  /* Extrato da conta */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  ul li:last-child {
+    border-bottom: none;
+  }
+  
+  ul li span {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 24px;
+    }
+  
+    h3, h4 {
+      font-size: 18px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .account-button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    input[type="text"], input[type="number"] {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 20px;
+    }
+  
+    h3, h4 {
+      font-size: 16px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    .account-button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    input[type="text"], input[type="number"] {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  
