@@ -52,29 +52,36 @@ Verificando a instalação:
 
 No terminal, execute os seguintes comandos para verificar se o Node.js e npm estão instalados corretamente:
 
+```
 node -v
 npm -v
+```
 
 Ferramenta para criar e gerenciar projetos Angular.
 npm install -g @angular/cli
 verifique a instalação
+```
 ng version
+```
 
 ---
 ### 3. Clonar o Repositório
 
    No terminal, execute o seguinte comando para clonar o repositório:
 
-   git clone https://github.com/seu-usuario/app-bancario.git
-   cd app-bancario
-
+  ```
+git clone https://github.com/seu-usuario/app-bancario.git
+  ```
+   
 
 ---
 ### 4. Subir os Containers
 
 No terminal, navegue até a pasta docker e execute:
 
-   docker compose up
+ ```
+ docker compose up
+```
    
 ---
 ### 5. Acessar e Rodar o Front
