@@ -1,191 +1,160 @@
-/* Container principal */
+/* Conta Component - Gerenciar Contas (Tema Escuro) */
+
+/* Estilo do corpo da página */
 .content-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f4f7fc;
-    padding: 20px;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+  min-height: 800px;
+  margin: 0 auto;
+  background-color: #2c2f36; /* Cor de fundo escura */
+  color: #f1f1f1; /* Texto claro */
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Cabeçalhos */
+h1, h3, h4 {
+  color: #f1f1f1;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Estilo para inputs */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #444; /* Cor de borda mais escura */
+  background-color: #333; /* Fundo escuro */
+  color: #f1f1f1; /* Texto claro */
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Botões */
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background-color: #4CAF50; /* Verde para destacar */
+  color: white;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: #555; /* Cor de fundo para botões desativados */
+  cursor: not-allowed;
+}
+
+/* Lista de contas */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+.account-button {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #444;
+  background-color: #333;
+  text-align: left;
+  font-size: 18px;
+  color: #f1f1f1;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.account-button:hover {
+  background-color: #444;
+}
+
+.selected {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Exibição de erros */
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Estilo para a seção de extrato */
+ul.transacao-list {
+  padding: 0;
+  margin: 10px 0;
+}
+
+ul.transacao-list li {
+  padding: 8px;
+  border-bottom: 1px solid #555;
+  font-size: 14px;
+}
+
+ul.transacao-list li span {
+  display: inline-block;
+  width: 30%;
+  text-align: left;
+}
+
+.transacao-list .data-transacao {
+  font-weight: bold;
+}
+
+/* Detalhes da conta */
+.account-details p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Seção do saldo */
+.saldo {
+  font-size: 32px; /* Maior tamanho para destaque */
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  color: #f1f1f1;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .content-wrapper {
+    width: 90%;
+    padding: 15px;
   }
-  
-  /* Container interno */
-  .container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
-    box-sizing: border-box;
-  }
-  
-  /* Título principal */
+
   h1 {
-    font-size: 28px;
-    color: #2b2b2b;
-    margin-bottom: 20px;
-    font-weight: 600;
-    text-align: center;
+    font-size: 24px;
   }
-  
-  /* Título das seções */
-  h3 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
-  /* Estilos dos campos de input */
-  input[type="text"], input[type="number"] {
-    width: 96%;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-top: 8px;
-    margin-bottom: 20px;
-  }
-  
-  input[type="text"]:focus, input[type="number"]:focus {
-    outline: none;
-    border-color: #0066cc;
-  }
-  
-  /* Botões */
-  button {
-    padding: 12px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #0066cc;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    background-color: #005bb5;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  /* Estilo dos botões de contas */
-  .account-button {
-    padding: 12px;
-    font-size: 16px;
-    color: white;
-    background-color: #28a745;
-    border: none;
-    border-radius: 8px;
-    width: 100%;
-    margin-bottom: 10px;
-    text-align: left;
-  }
-  
-  .account-button.selected {
-    background-color: #0066cc;
-  }
-  
-  .account-button:hover {
-    background-color: #218838;
-  }
-  
-  /* Estilo para o erro */
-  .error {
-    margin-top: 20px;
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #f5c6cb;
-  }
-  
-  .error p {
-    margin: 0;
-  }
-  
-  /* Extrato da conta */
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  ul li {
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  ul li:last-child {
-    border-bottom: none;
-  }
-  
-  ul li span {
+
+  input, button {
     font-size: 14px;
-    color: #555;
   }
-  
-  /* Responsividade */
-  @media (max-width: 768px) {
-    .container {
-      padding: 20px;
-    }
-  
-    h1 {
-      font-size: 24px;
-    }
-  
-    h3, h4 {
-      font-size: 18px;
-    }
-  
-    button {
-      font-size: 14px;
-      padding: 10px;
-    }
-  
-    .account-button {
-      font-size: 14px;
-      padding: 10px;
-    }
-  
-    input[type="text"], input[type="number"] {
-      font-size: 14px;
-      padding: 10px;
-    }
+
+  .account-button {
+    font-size: 16px;
   }
-  
-  @media (max-width: 480px) {
-    .container {
-      padding: 15px;
-    }
-  
-    h1 {
-      font-size: 20px;
-    }
-  
-    h3, h4 {
-      font-size: 16px;
-    }
-  
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  
-    .account-button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  
-    input[type="text"], input[type="number"] {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-  
+}

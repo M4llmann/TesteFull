@@ -3,7 +3,14 @@ package com.Backend.AppBanco.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Transacao")
@@ -35,7 +42,7 @@ public class TransacaoEntity {
         this.tipo = tipo;
         this.valor = valor;
         this.conta = conta;
-        this.dataTransacao = LocalDateTime.now(); // Define a data atual para dataTransacao
+        this.dataTransacao = LocalDateTime.now();
     }
 
     // Getters e Setters

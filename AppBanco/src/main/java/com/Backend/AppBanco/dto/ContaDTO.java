@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 public class ContaDTO {
     private Integer idConta;
     private String nomeTitular;
-    private BigDecimal saldo = BigDecimal.ZERO;  // Inicializado com zero
-    private Boolean status = true;  // Definido como true por padrão
+    private BigDecimal saldo = BigDecimal.ZERO;
+    private Boolean status = true;
     private LocalDateTime dataCriacao;
     private Integer idUsuario;
 
@@ -18,8 +18,8 @@ public class ContaDTO {
     public ContaDTO(Integer idConta, String nomeTitular, BigDecimal saldo, Boolean status, LocalDateTime dataCriacao, Integer idUsuario) {
         this.idConta = idConta;
         this.nomeTitular = nomeTitular;
-        this.saldo = saldo != null ? saldo : BigDecimal.ZERO;  // Garantindo que o saldo seja zero se não for informado
-        this.status = status != null ? status : true;  // Garantindo que o status seja true se não for informado
+        this.saldo = saldo != null ? saldo : BigDecimal.ZERO;
+        this.status = status != null ? status : true;
         this.dataCriacao = dataCriacao;
         this.idUsuario = idUsuario;
     }

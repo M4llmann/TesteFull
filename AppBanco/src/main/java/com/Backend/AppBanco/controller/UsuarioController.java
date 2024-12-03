@@ -25,11 +25,9 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity<?> criarUsuario(@RequestBody UsuarioEntity usuario) {
         try {
-            // Tenta criar o usuário
             UsuarioEntity usuarioCriado = usuarioService.criarUsuario(usuario.getEmail(), usuario.getSenha());
             return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCriado);
         } catch (RuntimeException ex) {
-            // Se a exceção for lançada, retorna o erro com a mensagem
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
@@ -37,11 +35,9 @@ public class UsuarioController {
     @GetMapping("/{email}")
     public ResponseEntity<?> buscarUsuario(@PathVariable String email) {
         try {
-            // Tenta buscar o usuário pelo e-mail
             UsuarioEntity usuario = usuarioService.buscarUsuarioPorEmail(email);
             return ResponseEntity.ok(usuario);
         } catch (RuntimeException ex) {
-            // Se a exceção for lançada, retorna o erro com a mensagem
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
     }

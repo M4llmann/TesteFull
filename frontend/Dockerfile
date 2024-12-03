@@ -1,20 +1,17 @@
-# Etapa de build
-FROM node:20 as build
+FROM node:22
 
-# Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copie o arquivo package.json e o package-lock.json
 COPY package*.json ./
 
-# Instale as dependências
 RUN npm install
 
-# Copie os arquivos da aplicação para dentro do contêiner
+RUN npm install -g @angular/cli
+
 COPY . .
 
-# Exponha a porta 8080 para o servidor Angular
-EXPOSE 8080
+RUN npm run build --prod
 
-# Comando para rodar o servidor de desenvolvimento Angular
-CMD ["npm", "run", "start"]
+EXPOSE 4200
+
+CMD ["ng", "serve", "--host", "0.0.0.0"]

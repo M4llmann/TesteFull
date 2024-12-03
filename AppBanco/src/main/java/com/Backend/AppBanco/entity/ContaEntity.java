@@ -46,7 +46,7 @@ public class ContaEntity {
     // Construtor com parâmetros
     public ContaEntity(String nomeTitular, UsuarioEntity usuario) {
         this.nomeTitular = nomeTitular;
-        this.saldo = BigDecimal.ZERO; // Inicializa com zero
+        this.saldo = BigDecimal.ZERO;
         this.status = true;
         this.dataCriacao = LocalDateTime.now();
         this.usuario = usuario;

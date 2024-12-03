@@ -6,11 +6,9 @@ import java.time.LocalDateTime;
 public class TransacaoDTO {
     private Integer idTransacao;
     private Integer idConta;
-    private String tipo;  // Considere usar um Enum aqui para controle de tipos
+    private String tipo;
     private BigDecimal valor;
     private LocalDateTime dataTransacao;
-
-    // Construtores, Getters e Setters
 
     public TransacaoDTO() {}
 

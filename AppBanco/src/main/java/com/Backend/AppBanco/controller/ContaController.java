@@ -33,9 +33,7 @@ public ContaController(ContaService contaService, TransacaoService transacaoServ
     this.transacaoService = transacaoService;
 }
 
-
-
-    private ContaDTO toContaDTO(ContaEntity conta) {
+private ContaDTO toContaDTO(ContaEntity conta) {
         return new ContaDTO(
             conta.getIdConta(),
             conta.getNomeTitular(),
