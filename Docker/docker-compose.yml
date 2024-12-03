@@ -29,17 +29,17 @@ services:
     networks:
       - tentativa-network
 
-  frontend:
-    build:
-      context: ../frontend  # Caminho relativo para o frontend
-      dockerfile: Dockerfile
-    container_name: banco-frontend
-    ports:
-      - "4200:4200"  # Porta para o frontend Angular
-    depends_on:
-      - app-banco  # O frontend depende do backend
-    networks:
-      - tentativa-network
+  # frontend:
+  #   build:
+  #     context: ../frontend  # Caminho relativo para o frontend
+  #     dockerfile: Dockerfile
+  #   container_name: banco-frontend
+  #   ports:
+  #     - "4200:4200"  # Porta para o frontend Angular
+  #   depends_on:
+  #     - app-banco  # O frontend depende do backend
+  #   networks:
+  #     - tentativa-network
 
 networks:
   tentativa-network:
