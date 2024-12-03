@@ -78,7 +78,7 @@ cd/caminho/paraodiretorio/ex
 ```
 E faça o comando para copiar o projeto.
   ```
-git clone https://github.com/seu-usuario/app-bancario.git
+git clone https://github.com/M4llmann/TesteFull.git
   ```
 
 
