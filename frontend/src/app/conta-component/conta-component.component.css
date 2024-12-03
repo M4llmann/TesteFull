@@ -29,7 +29,7 @@ h1 {
 input[type="text"],
 input[type="number"] {
   width: 100%;
-  padding: 12px;
+  padding: 13px;
   margin: 10px 0;
   border: 1px solid #444; /* Cor de borda mais escura */
   background-color: #333; /* Fundo escuro */
