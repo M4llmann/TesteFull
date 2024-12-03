@@ -65,14 +65,22 @@ ng version
 ```
 
 ---
-### 3. Clonar o Repositório
+### 3. Instalar Git e Clonar o Repositório
 
-   No terminal, execute o seguinte comando para clonar o repositório:
+Acesse o link https://git-scm.com/downloads e faça a instalação do Git, caso não tenha.
 
+   Após a instalação, no terminal, execute o seguinte comando para clonar o repositório:
+
+   No Terminal, navegue até a pasta onde deseja baixar o projeto:
+
+```
+cd/caminho/paraodiretorio/ex
+```
+E faça o comando para copiar o projeto.
   ```
 git clone https://github.com/seu-usuario/app-bancario.git
   ```
-   
+
 
 ---
 ### 4. Subir os Containers
