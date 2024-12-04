@@ -58,7 +58,9 @@ npm -v
 ```
 
 Ferramenta para criar e gerenciar projetos Angular.
+
 npm install -g @angular/cli
+
 verifique a instalação
 ```
 ng version
@@ -88,13 +90,28 @@ git clone https://github.com/M4llmann/TesteFull.git
 No terminal, navegue até a pasta docker e execute:
 
  ```
- docker compose up
+ docker compose up db
 ```
-   
+```
+docker compose down
+```
+```
+docker compose up
+```
+
+Fazer desta forma para o banco não dar erro.
 ---
 ### 5. Acessar e Rodar o Front
 
-Navegue até a pasta Frontend, dê o comando ng serve
+Navegue até a pasta Frontend, dê o comando
+
+```
+ng serve
+```
+
+
+
+
 
 Acesse o aplicativo no navegador pelo endereço:
 http://localhost:4200

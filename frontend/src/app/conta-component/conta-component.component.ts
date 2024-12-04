@@ -50,7 +50,7 @@ export class ContaComponent implements OnInit {
       error: (err) => {
         console.error('Erro ao listar contas:', err);
         this.erro = true;
-        alert('Não foi possível listar as contas.');
+        alert('Crie uma conta!');
       },
     });
   }
@@ -129,7 +129,7 @@ export class ContaComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao realizar saque:', err);
-        alert('Erro ao realizar saque. Tente novamente.');
+        alert('Erro ao realizar saque, saldo insuficiente. Tente novamente.');
       },
     });
   }
