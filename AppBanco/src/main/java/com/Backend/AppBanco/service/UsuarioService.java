@@ -32,4 +32,16 @@ public class UsuarioService {
         return usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
     }
+    public UsuarioEntity login(String email, String senha) {
+        // Verifica se o usuário existe
+        UsuarioEntity usuario = usuarioRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        
+        // Verifica se a senha está correta
+        if (!usuario.getSenha().equals(senha)) {
+            throw new RuntimeException("Senha incorreta.");
+        }
+    
+        return usuario;
+    }
 }

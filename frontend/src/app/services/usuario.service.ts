@@ -20,4 +20,7 @@ export class UsuarioService {
   buscarUsuarioPorEmail(email: string): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.apiUrl}/${email}`);
   }
+  login(usuario: any): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.apiUrl}/login`, usuario);
+  }
 }

@@ -41,4 +41,13 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
     }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UsuarioEntity usuario) {
+        try {
+            UsuarioEntity usuarioLogado = usuarioService.login(usuario.getEmail(), usuario.getSenha());
+            return ResponseEntity.ok(usuarioLogado); // Retorna o usuário logado
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage()); // Retorna erro de login
+        }
+    }
 }

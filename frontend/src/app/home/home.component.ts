@@ -56,26 +56,26 @@ export class HomeComponent {
       return;
     }
 
-    this.usuarioService.buscarUsuarioPorEmail(this.email).subscribe({
+    const usuarioDTO = {
+      email: this.email,
+      senha: this.senha,
+    };
+
+    // Usando o método 'login' do serviço ao invés de 'buscarUsuarioPorEmail'
+    this.usuarioService.login(usuarioDTO).subscribe({
       next: (usuario: Usuario) => {
-        // Validando senha
-        if (usuario && usuario.senha === this.senha) {
-          console.log('Usuário encontrado:', usuario); // Verifique os dados retornados
-          if (usuario.idUsuario) {
-            localStorage.setItem('idUsuario', usuario.idUsuario.toString()); // Armazenando o idUsuario no localStorage
-            alert('Login realizado com sucesso!');
-            this.router.navigate(['/conta']);
-          } else {
-            alert('Erro: idUsuario não encontrado na resposta');
-          }
+        console.log('Usuário logado:', usuario);
+        if (usuario.idUsuario) {
+          localStorage.setItem('idUsuario', usuario.idUsuario.toString()); // Armazenando o idUsuario no localStorage
+          alert('Login realizado com sucesso!');
+          this.router.navigate(['/conta']);
         } else {
-          alert('Senha incorreta.');
+          alert('Erro: idUsuario não encontrado na resposta');
         }
       },
       error: (err) => {
-        console.error('Erro ao buscar usuário', err);
-        alert('Usuário não encontrado.');
-        this.erroLogin = 'Erro ao buscar usuário: ' + err.message; // Detalhamento do erro
+        console.error('Erro ao realizar login', err);
+        alert('E-mail ou senha incorretos.');
       },
     });
   }
