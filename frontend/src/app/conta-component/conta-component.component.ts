@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ContaDTO } from '../conta.model';
 import { TransacaoDTO } from '../transacao.model';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -19,9 +20,10 @@ export class ContaComponent implements OnInit {
   valor: number = 0;
   mostrarExtrato: boolean = false;
   extrato: TransacaoDTO[] = []; // Tipagem correta para o extrato
-    erro: boolean = false;
+  erro: boolean = false;
+  
 
-  constructor(private contaService: ContaService) {}
+  constructor(private contaService: ContaService, private router: Router) {}
 
   ngOnInit(): void {
     this.listarContas();
@@ -31,7 +33,8 @@ export class ContaComponent implements OnInit {
     const idUsuario = localStorage.getItem('idUsuario');
     if (!idUsuario) {
       alert('Usuário não autenticado! Faça login para listar as contas.');
-      return;
+      this.router.navigate(['']);  // Isso redireciona para a página de login caso o idUsuario não esteja presente
+    return;
     }
   
     this.contaService.listarContasPorUsuario().subscribe({
@@ -167,4 +170,12 @@ export class ContaComponent implements OnInit {
       },
     });
   }
+  sair(): void {
+    // Limpar as informações do usuário do localStorage
+    localStorage.removeItem('idUsuario');
+    
+    // Redirecionar para a página de login
+    this.router.navigate(['']);  // A rota de login pode variar dependendo de como está configurado no seu Angular
+  }
+  
 }
