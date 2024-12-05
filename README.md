@@ -1,7 +1,8 @@
 # 💻 Sobre o Projeto
 
 Este **APP Bancário** foi construído com o intuito de **aprender e explorar tecnologias modernas!**  
-Trata-se de uma **API de gestão bancária** desenvolvida em **Java Spring**, com banco de dados **PostgreSQL** e front-end em **Angular**.  
+Trata-se de uma **API de gestão bancária** simples, desenvolvida em **Java Spring**, com banco de dados **PostgreSQL** e front-end em **Angular**.  
+
 O projeto simula funcionalidades básicas de um banco, permitindo criar e gerenciar contas bancárias, realizar operações financeiras e consultar informações.
 
 ## 🚀 Funcionalidades
@@ -37,43 +38,14 @@ Primeiro, baixe e instale o Docker Desktop em seu sistema.
 2. Siga as instruções de instalação fornecidas.
 
 ---
-### 2. Instalar o Node.js e NPM
 
-O Angular CLI requer o Node.js. Certifique-se de instalar a versão **LTS** mais recente. O **npm** (Node Package Manager) vem junto com o Node.js e é usado para instalar pacotes do Angular.
-
-- **Link de download**: [Node.js](https://nodejs.org/pt-br/)
-
-**Passos para instalação:**
-
-1. Acesse o link e baixe a versão **LTS** do Node.js.
-2. Siga as instruções para instalação.
-
-Verificando a instalação:
-
-No terminal, execute os seguintes comandos para verificar se o Node.js e npm estão instalados corretamente:
-
-```
-node -v
-npm -v
-```
-
-Ferramenta para criar e gerenciar projetos Angular.
-
-npm install -g @angular/cli
-
-verifique a instalação
-```
-ng version
-```
-
----
-### 3. Instalar Git e Clonar o Repositório
+### 2. Instalar Git e Clonar o Repositório
 
 Acesse o link https://git-scm.com/downloads e faça a instalação do Git, caso não tenha.
 
-   Após a instalação, no terminal, execute o seguinte comando para clonar o repositório:
+   Após a instalação, no terminal, execute os seguintes comandos para clonar o repositório:
 
-   No Terminal, navegue até a pasta onde deseja baixar o projeto:
+   Navegue até a pasta onde deseja baixar o projeto:
 
 ```
 cd/caminho/paraodiretorio/ex
@@ -85,7 +57,7 @@ git clone https://github.com/M4llmann/TesteFull.git
 
 
 ---
-### 4. Subir os Containers
+### 3. Subir os Containers
 
 No terminal, navegue até a pasta docker e execute:
 
@@ -102,15 +74,6 @@ docker compose up
 Fazer desta forma para o banco não dar erro.
 ---
 ### 5. Acessar e Rodar o Front
-
-Navegue até a pasta Frontend, dê o comando
-
-```
-ng serve
-```
-
-
-
 
 
 Acesse o aplicativo no navegador pelo endereço:
