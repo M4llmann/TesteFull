@@ -20,6 +20,12 @@ import com.Backend.AppBanco.entity.ContaEntity;
 import com.Backend.AppBanco.service.ContaService;
 import com.Backend.AppBanco.service.TransacaoService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @CrossOrigin(origins="*")
 @RequestMapping("/api/contas")
@@ -43,7 +49,13 @@ private ContaDTO toContaDTO(ContaEntity conta) {
             conta.getUsuario().getIdUsuario()
         );
     }
-    
+    @Operation(summary = "Criar nova conta")
+    @ApiResponses(value = { 
+      @ApiResponse(responseCode = "201", description = "Conta criada com sucesso", 
+        content = { @Content(mediaType = "application/json", 
+          schema = @Schema(implementation = ContaDTO.class)) }), 
+      @ApiResponse(responseCode = "400", description = "Requisição inválida", 
+        content = @Content) })
     @PostMapping("/{idUsuario}")
     public ResponseEntity<?> criarConta(@PathVariable Integer idUsuario, @RequestBody ContaDTO contaDTO) {
         try {
@@ -54,6 +66,13 @@ private ContaDTO toContaDTO(ContaEntity conta) {
         }
     }
 
+    @Operation(summary = "Buscar Conta")
+    @ApiResponses(value = { 
+      @ApiResponse(responseCode = "200", description = "Conta localizada com sucesso", 
+        content = { @Content(mediaType = "application/json", 
+          schema = @Schema(implementation = ContaDTO.class)) }), 
+      @ApiResponse(responseCode = "404", description = "Conta não encontrada", 
+        content = @Content) })
     @GetMapping("/{idConta}")
     public ResponseEntity<?> buscarConta(@PathVariable Integer idConta) {
         try {
@@ -64,6 +83,13 @@ private ContaDTO toContaDTO(ContaEntity conta) {
         }
     }
 
+    @Operation(summary = "Consultar saldo")
+    @ApiResponses(value = { 
+      @ApiResponse(responseCode = "200", description = "Saldo da conta consultado com sucesso", 
+        content = { @Content(mediaType = "application/json", 
+          schema = @Schema(implementation = BigDecimal.class)) }), 
+      @ApiResponse(responseCode = "404", description = "Conta não encontrada", 
+        content = @Content) })
     @GetMapping("/{idConta}/saldo")
     public ResponseEntity<?> consultarSaldo(@PathVariable Integer idConta) {
         try {
@@ -73,8 +99,14 @@ private ContaDTO toContaDTO(ContaEntity conta) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
     }
-    
 
+    @Operation(summary = "Realizar Depósito")
+    @ApiResponses(value = { 
+      @ApiResponse(responseCode = "200", description = "Depósito efetuado com sucesso", 
+        content = { @Content(mediaType = "application/json", 
+          schema = @Schema(implementation = ContaDTO.class)) }), 
+      @ApiResponse(responseCode = "400", description = "Requisição inválida", 
+        content = @Content) })
     @PostMapping("/{idConta}/deposito")
     public ResponseEntity<?> realizarDeposito(@PathVariable Integer idConta, @RequestParam BigDecimal valor) {
         try {
@@ -84,6 +116,14 @@ private ContaDTO toContaDTO(ContaEntity conta) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
+
+    @Operation(summary = "Realizar Saque")
+    @ApiResponses(value = { 
+      @ApiResponse(responseCode = "200", description = "Saque efetuado com sucesso", 
+        content = { @Content(mediaType = "application/json", 
+          schema = @Schema(implementation = ContaDTO.class)) }), 
+      @ApiResponse(responseCode = "400", description = "Requisição inválida", 
+        content = @Content) })
     @PostMapping("/{idConta}/saque")
     public ResponseEntity<?> realizarSaque(@PathVariable Integer idConta, @RequestParam BigDecimal valor) {
         try {
@@ -94,24 +134,30 @@ private ContaDTO toContaDTO(ContaEntity conta) {
         }
     }
 
+    @Operation(summary = "Mostrar Extrato")
+    @ApiResponses(value = { 
+      @ApiResponse(responseCode = "200", description = "Extrato carregado com sucesso", 
+        content = { @Content(mediaType = "application/json", 
+          schema = @Schema(implementation = TransacaoDTO.class)) }), 
+      @ApiResponse(responseCode = "404", description = "Extrato não encontrado", 
+        content = @Content) })
     @GetMapping("/{idConta}/extrato")
-public ResponseEntity<?> obterExtrato(@PathVariable Integer idConta) {
-    try {
-        List<TransacaoDTO> extrato = transacaoService.obterExtrato(idConta).stream()
-            .map(transacao -> new TransacaoDTO(
-                transacao.getIdTransacao(),
-                transacao.getConta().getIdConta(),
-                transacao.getTipo(),
-                transacao.getValor(),
-                transacao.getDataTransacao()
-            ))
-            .toList();
-        return ResponseEntity.ok(extrato);
-    } catch (RuntimeException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    public ResponseEntity<?> obterExtrato(@PathVariable Integer idConta) {
+        try {
+            List<TransacaoDTO> extrato = transacaoService.obterExtrato(idConta).stream()
+                .map(transacao -> new TransacaoDTO(
+                    transacao.getIdTransacao(),
+                    transacao.getConta().getIdConta(),
+                    transacao.getTipo(),
+                    transacao.getValor(),
+                    transacao.getDataTransacao()
+                ))
+                .toList();
+            return ResponseEntity.ok(extrato);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
     }
-}
-    
 }
 
 

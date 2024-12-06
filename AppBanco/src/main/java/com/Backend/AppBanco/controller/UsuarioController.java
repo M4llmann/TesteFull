@@ -14,14 +14,37 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Backend.AppBanco.entity.UsuarioEntity;
 import com.Backend.AppBanco.service.UsuarioService;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/usuarios")
+@OpenAPIDefinition(
+    info = @Info(
+        title = "API de Gestão de Usuários do Banco",
+        version = "1.0",
+        description = "API para gerenciamento de usuários no sistema bancário"
+        
+    )
+)
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
 
+    @Operation(summary = "Criar novo usuário")
+    @ApiResponses(value = { 
+      @ApiResponse(responseCode = "201", description = "Usuário criado com sucesso", 
+        content = { @Content(mediaType = "application/json", 
+          schema = @Schema(implementation = UsuarioEntity.class)) }), 
+      @ApiResponse(responseCode = "400", description = "Requisição inválida", 
+        content = @Content) })
     @PostMapping
     public ResponseEntity<?> criarUsuario(@RequestBody UsuarioEntity usuario) {
         try {
@@ -32,6 +55,13 @@ public class UsuarioController {
         }
     }
 
+    @Operation(summary = "Buscar usuário por e-mail")
+    @ApiResponses(value = { 
+      @ApiResponse(responseCode = "200", description = "Usuário encontrado com sucesso", 
+        content = { @Content(mediaType = "application/json", 
+          schema = @Schema(implementation = UsuarioEntity.class)) }), 
+      @ApiResponse(responseCode = "404", description = "Usuário não encontrado", 
+        content = @Content) })
     @GetMapping("/{email}")
     public ResponseEntity<?> buscarUsuario(@PathVariable String email) {
         try {
@@ -41,6 +71,14 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
     }
+
+    @Operation(summary = "Efetuar login")
+    @ApiResponses(value = { 
+      @ApiResponse(responseCode = "200", description = "Login efetuado com sucesso", 
+        content = { @Content(mediaType = "application/json", 
+          schema = @Schema(implementation = UsuarioEntity.class)) }), 
+      @ApiResponse(responseCode = "401", description = "Credenciais inválidas", 
+        content = @Content) })
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UsuarioEntity usuario) {
         try {
