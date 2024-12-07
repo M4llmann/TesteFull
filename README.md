@@ -88,3 +88,15 @@ http://localhost:4200
 ![Amostra](https://github.com/user-attachments/assets/6e7e1554-68ac-4c1e-a8d0-6c33b6834a4b)
 
 
+---
+
+## **Swagger**
+
+Documentação de APIs: Usado Swagger para documentar os endpoints, incluindo descrições detalhadas dos parâmetros e exemplos de resposta.
+
+basta acessar o link abaixo:
+
+```
+http://localhost:8080/api-docs
+
+```
