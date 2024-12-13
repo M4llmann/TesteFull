@@ -1,0 +1,223 @@
+/* Corpo da Página */
+.content-wrapper {
+  width: 100%;
+  max-width: 480px;
+  min-height: 800px;
+  margin: 0 auto;
+  background-color: #2c2f36;
+  color: #f1f1f1;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Cabeçalhos */
+h1, h3, h4 {
+  color: #f1f1f1;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.transaction-section {
+  display: flex;
+  flex-direction: column; /* Organiza os itens de forma vertical */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  justify-content: center; /* Alinha verticalmente os itens no centro */
+  
+  text-align: center; /* Centraliza o texto dentro da div */
+}
+
+/* Estilo para o campo de entrada */
+.input-number {
+  width: 40%; /* Largura de 50% em relação à div pai */
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box; /* Garante que o padding não afete a largura do input */
+  margin-bottom: 20px; /* Espaçamento entre o input e os botões */
+}
+
+input[type="text"], input[type="number"] {
+ 
+  text-align: center;
+  padding: 13px;
+  margin: 10px 0;
+  border: 1px solid #444;
+  background-color: #333;
+  color: #f1f1f1;
+  font-size: 16px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+/* Botões */
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+/* Lista de Contas */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+.account-button {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #444;
+  background-color: #333;
+  text-align: center;
+  font-size: 18px;
+  color: #f1f1f1;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 4px;
+}
+
+.account-button:hover {
+  background-color: #444;
+  transform: translateY(-2px);
+}
+
+.selected {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Erros */
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+/* Extrato */
+.extrato-container {
+  padding: 20px;
+  background-color: #44474d;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.extrato-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #f1f1f1;
+}
+
+.btn-extrato {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.btn-extrato:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.extrato-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 4px 0;
+  border-bottom: 1px solid #555;
+  font-size: 15px;
+  color: #f1f1f1;
+}
+
+.transacao-data, .transacao-tipo, .transacao-valor {
+  display: inline-block;
+  text-align: left;
+  flex: 1;
+}
+
+.transacao-valor.esquerda {
+  text-align: right;
+}
+
+.no-transacoes {
+  text-align: center;
+  color: #999;
+}
+
+.conta-detalhes {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
+  color: #f1f1f1;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .content-wrapper {
+    width: 90%;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  input, button {
+    font-size: 14px;
+  }
+
+  .account-button {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    width: 80%;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .saldo {
+    font-size: 28px;
+  }
+}

@@ -1,0 +1,103 @@
+<div class="content-wrapper">
+  <div class="container">
+    <!-- Título e nome do usuário -->
+    <header class="header">
+      <h1>Gerenciador da Conta</h1>
+    </header>
+
+    <!-- Formulário para criar conta (aparece somente se não houver nenhuma conta) -->
+    <section *ngIf="contas.length === 0" class="create-account-section">
+      <h3>Criar Conta</h3>
+      <label for="nomeTitular" class="label">Nome do Titular</label>
+      <input 
+        type="text" 
+        id="nomeTitular" 
+        [(ngModel)]="nomeTitular" 
+        placeholder="Digite o nome do titular" 
+        class="input-text" />
+      <button (click)="criarConta()" class="btn-criar-conta">Criar Conta</button>
+    </section>
+
+    <!-- Listagem de contas -->
+    <section class="accounts-section">
+      <h3>Bem vindo!</h3>
+      <ul class="accounts-list">
+        <li *ngFor="let conta of contas" class="account-item">
+          <button 
+            (click)="selecionarConta(conta)" 
+            [class.selected]="conta === contaSelecionada" 
+            class="account-button">
+            {{ conta.nomeTitular }}
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Se uma conta for selecionada -->
+    <section *ngIf="contaSelecionada" class="account-details-section">
+      <h3>Detalhes da Conta: {{ contaSelecionada.nomeTitular }}</h3>
+
+      <!-- Realizar Transação -->
+      <div class="transaction-section">
+        <h4>Realizar Transação</h4>
+        <input 
+          type="number" 
+          [(ngModel)]="valor" 
+          placeholder="Digite o valor" 
+          class="input-number" />
+
+        <!-- Botões de Depósito e Saque -->
+        <button 
+          (click)="realizarDeposito()" 
+          *ngIf="valor > 0" 
+          class="btn-deposito">
+          Depositar
+        </button>
+
+        <button 
+          (click)="realizarSaque()" 
+          *ngIf="valor > 0" 
+          class="btn-saque">
+          Sacar
+        </button>
+      </div>
+
+      <!-- Extrato -->
+      <section class="extrato-container">
+        <h4 class="extrato-title">Extrato da Conta</h4>
+        <button class="btn-extrato" (click)="carregarExtrato()">Carregar Extrato</button>
+
+        <div *ngIf="extrato.length > 0" class="extrato-list">
+          <ul>
+            <li *ngFor="let transacao of extrato" class="extrato-item">
+              <span class="transacao-data">{{ transacao.dataTransacao | date: 'dd/MM/yyyy HH:mm' }}</span> 
+              <span class="transacao-tipo">{{ transacao.tipo }}</span> 
+              <span class="transacao-valor esquerda">{{ transacao.valor | currency }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div *ngIf="extrato.length === 0" class="no-transacoes">
+          <p>Nenhuma transação registrada.</p>
+        </div>
+      </section>
+
+      <!-- Detalhes da Conta -->
+      <section class="conta-container">
+        <div class="conta-detalhes">
+          <p><strong>Saldo Atual: R</strong> <span class="conta-saldo">{{ contaSelecionada.saldo | currency }}</span></p>
+        </div>
+      </section>
+    </section>
+
+    <!-- Exibição de erros -->
+    <section *ngIf="erro" class="error-section">
+      <p class="error-message">Você ainda não tem nenhuma conta cadastrada!</p>
+    </section>
+  </div>
+  <button 
+  (click)="sair()" 
+  class="btn-sair">
+  Sair
+</button>
+</div>

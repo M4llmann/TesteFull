@@ -1,0 +1,20 @@
+<div class="login-container">
+  <h1>APP Banco</h1>
+  <form (ngSubmit)="cadastrar()" class="login-form">
+    <div class="input-group">
+      <label for="email">Email:</label>
+      <input id="email" [(ngModel)]="email" name="email" type="email" required />
+    </div>
+
+    <div class="input-group">
+      <label for="senha">Senha:</label>
+      <input id="senha" [(ngModel)]="senha" name="senha" type="password" required />
+    </div>
+
+    <div class="buttons">
+      <button type="button" (click)="login()" class="login-btn">Login</button>
+      <button type="submit" class="submit-btn">Cadastrar</button>
+    </div>
+  </form>
+  <a routerLink="/conta" class="conta-link"></a>
+</div>
