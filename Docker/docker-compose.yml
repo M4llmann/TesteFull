@@ -13,33 +13,33 @@ services:
     networks:
       - tentativa-network
 
-  # app-banco:
-  #   build:
-  #     context: ../AppBanco   # Caminho relativo para o backend
-  #     dockerfile: Dockerfile
-  #   container_name: app-banco
-  #   environment:
-  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres  # Conexão ao banco de dados
-  #     - SPRING_DATASOURCE_USERNAME=postgres
-  #     - SPRING_DATASOURCE_PASSWORD=postgres
-  #   ports:
-  #     - "8080:8080"  # Porta para acessar a API do Spring Boot
-  #   depends_on:
-  #     - db  # O backend depende do banco de dados
-  #   networks:
-  #     - tentativa-network
+  app-banco:
+    build:
+      context: ../AppBanco   # Caminho relativo para o backend
+      dockerfile: Dockerfile
+    container_name: app-banco
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres  # Conexão ao banco de dados
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    ports:
+      - "8080:8080"  # Porta para acessar a API do Spring Boot
+    depends_on:
+      - db  # O backend depende do banco de dados
+    networks:
+      - tentativa-network
 
-  # frontend:
-  #   build:
-  #     context: ../frontend  # Caminho relativo para o frontend
-  #     dockerfile: Dockerfile
-  #   container_name: banco-frontend
-  #   ports:
-  #     - "4200:4200"  # Porta para o frontend Angular
-  #   depends_on:
-  #     - app-banco  # O frontend depende do backend
-  #   networks:
-  #     - tentativa-network
+  frontend:
+    build:
+      context: ../frontend  # Caminho relativo para o frontend
+      dockerfile: Dockerfile
+    container_name: banco-frontend
+    ports:
+      - "4200:4200"  # Porta para o frontend Angular
+    depends_on:
+      - app-banco  # O frontend depende do backend
+    networks:
+      - tentativa-network
 
 networks:
   tentativa-network:
